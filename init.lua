@@ -827,9 +827,18 @@ require('lazy').setup({
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    "xiantang/darcula-dark.nvim",
+    'xiantang/darcula-dark.nvim',
+    -- opts = {
+    --  color_overrides = {
+    --    mocha = {
+    --      base = '#000000',
+    --      mantle = '#000000',
+    --      crust = '#000000',
+    --    },
+    --  },
+    --},
     dependencies = {
-        "nvim-treesitter/nvim-treesitter",
+      'nvim-treesitter/nvim-treesitter',
     },
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
