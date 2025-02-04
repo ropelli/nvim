@@ -189,6 +189,14 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Execute Lua in vim
+vim.keymap.set('n', '<leader>x', ':.lua<CR>', { desc = 'E[x]ecute line in Lua' })
+vim.keymap.set('v', '<leader>x', ':lua<CR>', { desc = 'E[x]ecute selection in Lua' })
+
+-- Quickfix list navigation
+vim.keymap.set('n', '<M-j>', '<cmd>cnext<CR>', { desc = 'Go to the next quickfix item' })
+vim.keymap.set('n', '<M-k>', '<cmd>cprev<CR>', { desc = 'Go to the previous quickfix item' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
