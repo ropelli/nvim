@@ -11,5 +11,9 @@ return {
       -- See Configuration section for options
     },
     -- See Commands section for default commands if you want to lazy load on them
+    keys = {
+      { '<leader>cpe', '<cmd>CopilotChatExplain<cr>', desc = 'Copilot Explain' },
+      { '<leader>cpf', '<cmd>CopilotChatFix<cr>', desc = 'Copilot Fix' },
+    },
   },
 }
