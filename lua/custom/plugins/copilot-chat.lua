@@ -14,6 +14,7 @@ return {
     keys = {
       { '<leader>cpe', '<cmd>CopilotChatExplain<cr>', desc = 'Copilot Explain' },
       { '<leader>cpf', '<cmd>CopilotChatFix<cr>', desc = 'Copilot Fix' },
+      { '<leader>cpc', '<cmd>CopilotChat<cr>', desc = 'Copilot Chat' },
     },
   },
 }
