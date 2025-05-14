@@ -844,15 +844,27 @@ require('lazy').setup({
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     'xiantang/darcula-dark.nvim',
-    -- opts = {
-    --  color_overrides = {
-    --    mocha = {
-    --      base = '#000000',
-    --      mantle = '#000000',
-    --      crust = '#000000',
-    --    },
-    --  },
-    --},
+    config = function()
+      -- setup must be called before loading
+      require('darcula').setup {
+        override = function(c)
+          return {
+            background = '#333333',
+            dark = '#000000',
+            light_blue = '#99aaff',
+          }
+        end,
+        opt = {
+          integrations = {
+            telescope = true,
+            lualine = true,
+            lsp_semantics_token = true,
+            nvim_cmp = true,
+            dap_nvim = true,
+          },
+        },
+      }
+    end,
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
     },
