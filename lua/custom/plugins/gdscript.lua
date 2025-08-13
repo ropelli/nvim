@@ -1,5 +1,16 @@
-local projectfile = vim.fn.getcwd() .. './project.godot'
-if projectfile then
+local function exists(filename)
+  local isPresent = true
+  local f = io.open(filename)
+  if not f then
+    isPresent = false
+  else
+    f:close()
+  end
+  return isPresent
+end
+
+if exists 'project.godot' then
+  print 'Starting Godot host...'
   vim.fn.serverstart './godothost'
 end
 return {
