@@ -923,10 +923,10 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sel', function()
         require('mini.sessions').read('session' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':t'))
       end, { desc = '[S][e]ssion [L]oad' })
-      vim.keymap.set('n', '<leader>sel', function()
-        t = require('mini.sessions').detected
+      vim.keymap.set('n', '<leader>sed', function()
+        local t = require('mini.sessions').detected
         print(vim.inspect(t))
-      end, { desc = '[S][e]ssion [L]ist' })
+      end, { desc = '[S][e]ssion [D]etected' })
 
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       --
