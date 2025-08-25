@@ -916,6 +916,18 @@ require('lazy').setup({
       --  - ci'  - [C]hange [I]nside [']quote
       require('mini.ai').setup { n_lines = 500 }
 
+      require('mini.sessions').setup {}
+      vim.keymap.set('n', '<leader>ses', function()
+        require('mini.sessions').write('session' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':t'))
+      end, { desc = '[S][e]ssion [S]ave' })
+      vim.keymap.set('n', '<leader>sel', function()
+        require('mini.sessions').read('session' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':t'))
+      end, { desc = '[S][e]ssion [L]oad' })
+      vim.keymap.set('n', '<leader>sel', function()
+        t = require('mini.sessions').detected
+        print(vim.inspect(t))
+      end, { desc = '[S][e]ssion [L]ist' })
+
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       --
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
