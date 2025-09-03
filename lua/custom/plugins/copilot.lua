@@ -18,6 +18,13 @@ return {
         desc = 'Copilot Accept Word',
         expr = true,
         silent = true,
+        replace_keycodes = false,
+      })
+      vim.keymap.set('i', '<C-k>', 'copilot#Accept()', {
+        desc = 'Copilot Accept Suggestion',
+        expr = true,
+        silent = true,
+        replace_keycodes = false,
       })
     end,
   },
