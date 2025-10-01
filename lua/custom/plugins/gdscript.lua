@@ -60,15 +60,30 @@ end
 
 -- Example keymap using a template
 vim.keymap.set('n', '<leader>gut', function()
-  run_with_function 'godot -s addons/gut/gut_cmdln.gd -d --path "$PWD" -gtest={file} -gunit_test_name={func} -glog=1'
-end, { noremap = true, silent = true, desc = 'Run Godot Unit Test (GUT) for current function' })
+  run_with_function(
+    'godot -s addons/gut/gut_cmdln.gd -d --path "$PWD" --remote-debug tcp://127.0.0.1:6007 -gtest={file} -gunit_test_name={func} -glog=1 --editor-pid '
+      .. vim.fn.getpid()
+  )
+end, { noremap = true, silent = true, desc = 'Run [G]odot [U]nit [T]est for current function' })
+vim.keymap.set('n', '<leader>guf', function()
+  os.execute(
+    'tmux split-window \'godot -s addons/gut/gut_cmdln.gd -d --path "$PWD" --remote-debug tcp://127.0.0.1:6007 -gtest='
+      .. vim.api.nvim_buf_get_name(0)
+      .. ' -gselect='
+      .. vim.api.nvim_buf_get_name(0):match '([^/]+)$'
+      .. ' -glog=1 --editor-pid '
+      .. vim.fn.getpid()
+      .. "'"
+  )
+end, { noremap = true, silent = true, desc = 'Run [G]odot [U]nit Test for Current [F]ile' })
+
 vim.keymap.set('n', '<leader>gur', function()
   if vim.g.last_run_with_command_funtion then
     os.execute("tmux split-window '" .. vim.g.last_run_with_command_funtion .. "'")
   else
     print 'No previous test command found'
   end
-end, { noremap = true, silent = true, desc = 'Re-run last Godot Unit Test (GUT) command' })
+end, { noremap = true, silent = true, desc = 'Last [G]odot [U]nit Test [R]e-run' })
 
 return {
   -- add the LSP server configuration through lspconfig
