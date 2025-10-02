@@ -20,7 +20,7 @@ return {
         silent = true,
         replace_keycodes = false,
       })
-      vim.keymap.set('i', '<C-k>', 'copilot#Accept()', {
+      vim.keymap.set('i', '<C-l>', 'copilot#Accept()', {
         desc = 'Copilot Accept Suggestion',
         expr = true,
         silent = true,
