@@ -21,7 +21,7 @@ return {
         local cmd = cmd_template:gsub('{dir}', dir)
         os.execute("tmux split-window -h '" .. cmd .. "'")
       end,
-      desc = "Open a new nvim panel with the current buffer's directory using tmux",
+      desc = 'Open dir in tmux split',
     },
   },
 }
