@@ -213,6 +213,10 @@ vim.keymap.set('n', '<M-k>', '<cmd>cprev<CR>', { desc = 'Go to the previous quic
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
+-- greatest remap ever, according to theprimeagen
+vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Paste no yank' })
+vim.keymap.set({ 'n', 'v' }, '<leader>d', '"_d', { desc = 'Delete no yank' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
