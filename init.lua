@@ -217,6 +217,48 @@ vim.keymap.set('n', '<M-k>', '<cmd>cprev<CR>', { desc = 'Go to the previous quic
 vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Paste no yank' })
 vim.keymap.set({ 'n', 'v' }, '<leader>d', '"_d', { desc = 'Delete no yank' })
 
+---Because most plugins are hosted on GitHub, you can use the helper
+---function to have less repetition in the following sections.
+---@param repo string
+---@return string
+local function gh(repo)
+  return 'https://github.com/' .. repo
+end
+
+vim.pack.add { gh 'xiantang/darcula-dark.nvim' }
+---@diagnostic disable-next-line: missing-fields
+require('darcula').setup {
+  -- styles = {
+  --   comments = { italic = false }, -- Disable italics in comments
+  -- },
+}
+-- Load the colorscheme here.
+-- Like many other themes, this one has different styles, and you could load
+-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+vim.cmd.colorscheme 'darcula-dark'
+-- setup must be called before loading
+require('darcula').setup {
+  override = function(c)
+    return {
+      background = '#333333',
+      dark = '#000000',
+      light_blue = '#99aaff',
+    }
+  end,
+  opt = {
+    integrations = {
+      telescope = true,
+      lualine = true,
+      lsp_semantics_token = true,
+      nvim_cmp = true,
+      dap_nvim = true,
+    },
+  },
+}
+
+-- You can configure highlights by doing something like:
+vim.cmd.hi 'Comment gui=none'
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -927,46 +969,6 @@ require('lazy').setup({
     },
   },
 
-  { -- You can easily change to a different colorscheme.
-    -- Change the name of the colorscheme plugin below, and then
-    -- change the command in the config to whatever the name of that colorscheme is.
-    --
-    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'xiantang/darcula-dark.nvim',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-    },
-    priority = 1000, -- Make sure to load this before all the other start plugins.
-    config = function()
-      -- setup must be called before loading
-      require('darcula').setup {
-        override = function(c)
-          return {
-            background = '#333333',
-            dark = '#000000',
-            light_blue = '#99aaff',
-          }
-        end,
-        opt = {
-          integrations = {
-            telescope = true,
-            lualine = true,
-            lsp_semantics_token = true,
-            nvim_cmp = true,
-            dap_nvim = true,
-          },
-        },
-      }
-      -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'darcula-dark'
-
-      -- You can configure highlights by doing something like:
-      vim.cmd.hi 'Comment gui=none'
-    end,
-  },
-
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
@@ -1022,7 +1024,7 @@ require('lazy').setup({
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    main = 'nvim-treesitter.configs', -- Sets main module to use for opts
+    main = 'nvim-treesitter.config', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
       ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },

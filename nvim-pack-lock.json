@@ -1,0 +1,8 @@
+{
+  "plugins": {
+    "darcula-dark.nvim": {
+      "rev": "e4a407f37a2a6d7d01c66cc54a569edccad81592",
+      "src": "https://github.com/xiantang/darcula-dark.nvim"
+    }
+  }
+}
