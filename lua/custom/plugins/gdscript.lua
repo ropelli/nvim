@@ -21,22 +21,16 @@ local function run_with_function(cmd_template)
     textDocument = vim.lsp.util.make_text_document_params(),
   }
   vim.lsp.buf_request(0, 'textDocument/documentSymbol', params, function(err, result, _, _)
-    if err or not result then
-      return
-    end
+    if err or not result then return end
 
     local function find_enclosing(symbols)
       local found
       for _, s in ipairs(symbols) do
         if s.range and pos.line >= s.range.start.line and pos.line <= s.range['end'].line then
-          if s.kind == 12 or s.kind == 6 then
-            found = s.name
-          end
+          if s.kind == 12 or s.kind == 6 then found = s.name end
           if s.children then
             local child = find_enclosing(s.children)
-            if child then
-              found = child
-            end
+            if child then found = child end
           end
         end
       end
@@ -59,23 +53,33 @@ local function run_with_function(cmd_template)
 end
 
 -- Example keymap using a template
-vim.keymap.set('n', '<leader>gut', function()
-  run_with_function(
-    'godot -s addons/gut/gut_cmdln.gd -d --path "$PWD" --remote-debug tcp://127.0.0.1:6007 -gtest={file} -gunit_test_name={func} -glog=1 --editor-pid '
-      .. vim.fn.getpid()
-  )
-end, { noremap = true, silent = true, desc = 'Run [G]odot [U]nit [T]est for current function' })
-vim.keymap.set('n', '<leader>guf', function()
-  os.execute(
-    'tmux split-window \'godot -s addons/gut/gut_cmdln.gd -d --path "$PWD" --remote-debug tcp://127.0.0.1:6007 -gtest='
-      .. vim.api.nvim_buf_get_name(0)
-      .. ' -gselect='
-      .. vim.api.nvim_buf_get_name(0):match '([^/]+)$'
-      .. ' -glog=1 --editor-pid '
-      .. vim.fn.getpid()
-      .. "'"
-  )
-end, { noremap = true, silent = true, desc = 'Run [G]odot [U]nit Test for Current [F]ile' })
+vim.keymap.set(
+  'n',
+  '<leader>gut',
+  function()
+    run_with_function(
+      'godot -s addons/gut/gut_cmdln.gd -d --path "$PWD" --remote-debug tcp://127.0.0.1:6007 -gtest={file} -gunit_test_name={func} -glog=1 --editor-pid '
+        .. vim.fn.getpid()
+    )
+  end,
+  { noremap = true, silent = true, desc = 'Run [G]odot [U]nit [T]est for current function' }
+)
+vim.keymap.set(
+  'n',
+  '<leader>guf',
+  function()
+    os.execute(
+      'tmux split-window \'godot -s addons/gut/gut_cmdln.gd -d --path "$PWD" --remote-debug tcp://127.0.0.1:6007 -gtest='
+        .. vim.api.nvim_buf_get_name(0)
+        .. ' -gselect='
+        .. vim.api.nvim_buf_get_name(0):match '([^/]+)$'
+        .. ' -glog=1 --editor-pid '
+        .. vim.fn.getpid()
+        .. "'"
+    )
+  end,
+  { noremap = true, silent = true, desc = 'Run [G]odot [U]nit Test for Current [F]ile' }
+)
 
 vim.keymap.set('n', '<leader>gur', function()
   if vim.g.last_run_with_command_funtion then
@@ -85,22 +89,4 @@ vim.keymap.set('n', '<leader>gur', function()
   end
 end, { noremap = true, silent = true, desc = 'Last [G]odot [U]nit Test [R]e-run' })
 
-return {
-  -- add the LSP server configuration through lspconfig
-  {
-    'neovim/nvim-lspconfig',
-    ---@class PluginLspOpts
-    opts = {
-      -- ---@type lspconfig.options
-      servers = {
-        gdscript = {}, -- NOTE: To change the port, you need to set the environment variable GDScript_Port to the correct port number.
-      },
-    },
-  },
-  {
-    'habamax/vim-godot',
-    config = function()
-      event = 'VimEnter'
-    end,
-  },
-}
+vim.pack.add { { src = 'https://github.com/habamax/vim-godot' } }

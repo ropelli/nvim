@@ -337,6 +337,11 @@ do
         vim.cmd 'TSUpdate'
         return
       end
+
+      if name == 'CopilotChat.nvim' then
+        if vim.fn.has 'win32' ~= 1 and vim.fn.executable 'make' == 1 then run_build(name, { 'make', 'tiktoken' }, ev.data.path) end
+        return
+      end
     end,
   })
 end
@@ -818,6 +823,7 @@ do
     clangd = {},
     docker_compose_language_service = {},
     dockerls = {},
+    -- gdscript = {},
     gopls = {},
     html = {},
     java_language_server = {},
