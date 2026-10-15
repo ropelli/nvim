@@ -32,5 +32,18 @@ vim.keymap.set('n', '<leader>ol', function()
   else
     require("oil").set_columns({ "icon" })
   end
-
 end, { desc = 'Toggle file details' })
+
+vim.keymap.set('n', '<leader>yp', function()
+  local oil = require 'oil'
+  local file_path = oil.get_current_dir()
+  if file_path == nil then
+    file_path = vim.fn.expand('%:p')
+    if file_path == '' then
+      print('No file path to copy')
+      return
+    end
+  end
+  vim.fn.setreg('+', file_path)
+  print('Copied file path to clipboard: ' .. file_path)
+end, { desc = 'Copy file path to clipboard' }) 
