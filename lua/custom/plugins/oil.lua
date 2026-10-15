@@ -23,3 +23,14 @@ require('oil').setup {
   },
 }
 vim.keymap.set('n', '-', '<cmd>Oil<cr>', { desc = 'Oil' })
+
+local oil_list_toggle = false
+vim.keymap.set('n', '<leader>ol', function()
+  oil_list_toggle = not oil_list_toggle
+  if oil_list_toggle then
+    require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
+  else
+    require("oil").set_columns({ "icon" })
+  end
+
+end, { desc = 'Toggle file details' })
