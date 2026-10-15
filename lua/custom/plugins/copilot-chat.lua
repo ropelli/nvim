@@ -10,9 +10,9 @@ require('CopilotChat').setup {
     },
   },
 }
-vim.keymap.set('n', '<leader>cpe', '<cmd>CopilotChatExplain<cr>', { desc = 'Copilot Explain' })
-vim.keymap.set('n', '<leader>cpf', '<cmd>CopilotChatFix<cr>', { desc = 'Copilot Fix' })
-vim.keymap.set('n', '<leader>cpc', '<cmd>CopilotChat<cr>', { desc = 'Copilot Chat' })
-vim.keymap.set('n', '<leader>cpr', '<cmd>CopilotChatReset<cr>', { desc = 'Copilot Chat Reset' })
-vim.keymap.set('n', '<leader>cpq', '<cmd>CopilotChatClose<cr>', { desc = 'Copilot Chat Close' })
-vim.keymap.set('n', '<leader>cpo', '<cmd>CopilotChatOptimize<cr>', { desc = 'Copilot Chat Optimize' })
+vim.keymap.set({'n', 'v'}, '<leader>cpe', '<cmd>CopilotChatExplain<cr>', { desc = 'Copilot Explain' })
+vim.keymap.set({'n', 'v'}, '<leader>cpf', '<cmd>CopilotChatFix<cr>', { desc = 'Copilot Fix' })
+vim.keymap.set({'n', 'v'}, '<leader>cpc', '<cmd>CopilotChat<cr>', { desc = 'Copilot Chat' })
+vim.keymap.set({'n', 'v'}, '<leader>cpr', '<cmd>CopilotChatReset<cr>', { desc = 'Copilot Chat Reset' })
+vim.keymap.set({'n', 'v'}, '<leader>cpq', '<cmd>CopilotChatClose<cr>', { desc = 'Copilot Chat Close' })
+vim.keymap.set({'n', 'v'}, '<leader>cpo', '<cmd>CopilotChatOptimize<cr>', { desc = 'Copilot Chat Optimize' })
