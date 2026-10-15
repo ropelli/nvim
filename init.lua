@@ -826,7 +826,6 @@ do
     -- gdscript = {},
     gopls = {},
     html = {},
-    java_language_server = {},
     lemminx = {},
     perlnavigator = {},
     templ = {},
