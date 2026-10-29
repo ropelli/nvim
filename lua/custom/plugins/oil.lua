@@ -115,7 +115,7 @@ vim.keymap.set('n', '<leader>og', function()
   oil_extensions.set_columns()
 end, { desc = 'Toggle git details' })
 
-vim.keymap.set('n', '<leader>yp', function()
+vim.keymap.set('n', '<leader>yap', function()
   local oil = require 'oil'
   local file_path = oil.get_current_dir()
   if file_path == nil then
@@ -127,4 +127,10 @@ vim.keymap.set('n', '<leader>yp', function()
   end
   vim.fn.setreg('+', file_path)
   print('Copied file path to clipboard: ' .. file_path)
-end, { desc = 'Copy file path to clipboard' }) 
+end, { desc = 'Copy absolute file path to clipboard' }) 
+
+vim.keymap.set('n', '<leader>yp', function()
+  local file_name = vim.fn.expand('%:t')
+  vim.fn.setreg('+', file_name)
+  print('Copied file name to clipboard: ' .. file_name)
+end, { desc = 'Copy buffer filename to clipboard' }) 
