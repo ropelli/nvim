@@ -218,7 +218,6 @@ do
 
   -- greatest remap ever, according to theprimeagen
   vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Paste no yank' })
-  vim.keymap.set({ 'n', 'v' }, '<leader>d', '"_d', { desc = 'Delete no yank' })
 
   ---Because most plugins are hosted on GitHub, you can use the helper
   ---function to have less repetition in the following sections.
