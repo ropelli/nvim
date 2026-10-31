@@ -1,5 +1,8 @@
 vim.keymap.set({'n', 'v'}, '<leader>dg', '<cmd>diffget<cr>', { desc = 'diff get' })
 vim.keymap.set({'n', 'v'}, '<leader>dp', '<cmd>diffput<cr>', { desc = 'diff put' })
+vim.keymap.set({'n', 'v'}, '<leader>do', '<cmd>diffoff!<cr>', { desc = 'diff off' })
+vim.keymap.set({'n', 'v'}, '<leader>dt', '<cmd>windo diffthis<cr>', { desc = 'diff windows' })
+
 vim.keymap.set('v', '<leader>dac', function()
   local lines = vim.fn.getregion(vim.fn.getpos('v'), vim.fn.getpos('.'), { type = vim.fn.mode() })
   if vim.tbl_isempty(lines) then
@@ -32,3 +35,28 @@ vim.keymap.set('v', '<leader>dac', function()
     vim.notify('diff-clipboard: failed to open tmux window', vim.log.levels.ERROR)
   end
 end, { desc = 'diff selection against clipboard' })
+
+vim.keymap.set('n', '<leader>dab', function()
+  local actions = require 'telescope.actions'
+  local action_state = require 'telescope.actions.state'
+  local cur_win = vim.api.nvim_get_current_win()
+
+  require('telescope.builtin').buffers {
+    sort_mru = true,               -- most-recently-used first
+    ignore_current_buffer = true,  -- no point diffing against itself
+    attach_mappings = function(prompt_bufnr)
+      actions.select_default:replace(function()
+        local entry = action_state.get_selected_entry()
+        actions.close(prompt_bufnr)
+        if not entry or not entry.bufnr then return end
+
+        -- other buffer goes in a vertical split on the far right
+        vim.cmd('botright vertical sbuffer ' .. entry.bufnr)
+        local other_win = vim.api.nvim_get_current_win()
+        vim.api.nvim_win_call(cur_win, function() vim.cmd 'diffthis' end)
+        vim.api.nvim_win_call(other_win, function() vim.cmd 'diffthis' end)
+      end)
+      return true
+    end,
+  }
+end, { desc = 'diff current buffer against another buffer' })
