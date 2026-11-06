@@ -1,5 +1,5 @@
 vim.pack.add {
-  { src = 'https://github.com/CopilotC-Nvim/CopilotChat.nvim', version = vim.version.range '*' },
+  { src = 'https://github.com/CopilotC-Nvim/CopilotChat.nvim', version = vim.version.range 'master' },
   'https://github.com/github/copilot.vim', -- or zbirenbaum/copilot.lua
   'https://github.com/nvim-lua/plenary.nvim', -- for curl, log wrapper
 }

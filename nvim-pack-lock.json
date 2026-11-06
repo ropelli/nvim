@@ -1,9 +1,8 @@
 {
   "plugins": {
     "CopilotChat.nvim": {
-      "rev": "1e06be97df058fa0bb4af54659c39918a4999c86",
-      "src": "https://github.com/CopilotC-Nvim/CopilotChat.nvim",
-      "version": ">=0.0.0"
+      "rev": "2b7da97d655416462d4d5c38d0eb1f1eacc900a2",
+      "src": "https://github.com/CopilotC-Nvim/CopilotChat.nvim"
     },
     "LuaSnip": {
       "rev": "642b0c595e11608b4c18219e93b88d7637af27bc",
