@@ -3,6 +3,11 @@ vim.pack.add {
   'https://github.com/nvim-lua/plenary.nvim',
   'https://github.com/nvim-treesitter/nvim-treesitter',
 }
+
+require('which-key').add {
+  { '<leader>r', group = '[R]efactor', mode = { 'x', 'n' } },
+}
+
 vim.keymap.set('x', '<leader>re', ':Refactor extract ')
 vim.keymap.set('x', '<leader>rf', ':Refactor extract_to_file ')
 

@@ -1,7 +1,12 @@
-vim.keymap.set({'n', 'v'}, '<leader>dg', '<cmd>diffget<cr>', { desc = 'diff get' })
-vim.keymap.set({'n', 'v'}, '<leader>dp', '<cmd>diffput<cr>', { desc = 'diff put' })
-vim.keymap.set({'n', 'v'}, '<leader>do', '<cmd>diffoff!<cr>', { desc = 'diff off' })
-vim.keymap.set({'n', 'v'}, '<leader>dt', '<cmd>windo diffthis<cr>', { desc = 'diff windows' })
+require('which-key').add {
+  { '<leader>d', group = '[D]iff', mode = { 'n', 'v' } },
+  { '<leader>da', group = '[D]iff [A]gainst', mode = { 'n', 'v' } },
+}
+
+vim.keymap.set({'n', 'v'}, '<leader>dg', '<cmd>diffget<cr>', { desc = '[D]iff [G]et' })
+vim.keymap.set({'n', 'v'}, '<leader>dp', '<cmd>diffput<cr>', { desc = '[D]iff [P]ut' })
+vim.keymap.set({'n', 'v'}, '<leader>do', '<cmd>diffoff!<cr>', { desc = '[D]iff [O]ff' })
+vim.keymap.set({'n', 'v'}, '<leader>dt', '<cmd>windo diffthis<cr>', { desc = '[D]iff [W]indows' })
 
 vim.keymap.set('v', '<leader>dac', function()
   local lines = vim.fn.getregion(vim.fn.getpos('v'), vim.fn.getpos('.'), { type = vim.fn.mode() })
@@ -34,7 +39,7 @@ vim.keymap.set('v', '<leader>dac', function()
   if status ~= 0 then
     vim.notify('diff-clipboard: failed to open tmux window', vim.log.levels.ERROR)
   end
-end, { desc = 'diff selection against clipboard' })
+end, { desc = 'Diff selection [A]gainst [C]lipboard' })
 
 vim.keymap.set('n', '<leader>dab', function()
   local actions = require 'telescope.actions'
@@ -59,4 +64,4 @@ vim.keymap.set('n', '<leader>dab', function()
       return true
     end,
   }
-end, { desc = 'diff current buffer against another buffer' })
+end, { desc = '[D]iff current buffer [A]gainst another [B]uffer' })
