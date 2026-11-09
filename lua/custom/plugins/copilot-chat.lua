@@ -10,9 +10,13 @@ require('CopilotChat').setup {
     },
   },
 }
-vim.keymap.set({'n', 'v'}, '<leader>cpe', '<cmd>CopilotChatExplain<cr>', { desc = 'Copilot Explain' })
-vim.keymap.set({'n', 'v'}, '<leader>cpf', '<cmd>CopilotChatFix<cr>', { desc = 'Copilot Fix' })
-vim.keymap.set({'n', 'v'}, '<leader>cpc', '<cmd>CopilotChat<cr>', { desc = 'Copilot Chat' })
-vim.keymap.set({'n', 'v'}, '<leader>cpr', '<cmd>CopilotChatReset<cr>', { desc = 'Copilot Chat Reset' })
-vim.keymap.set({'n', 'v'}, '<leader>cpq', '<cmd>CopilotChatClose<cr>', { desc = 'Copilot Chat Close' })
-vim.keymap.set({'n', 'v'}, '<leader>cpo', '<cmd>CopilotChatOptimize<cr>', { desc = 'Copilot Chat Optimize' })
+require('which-key').add {
+  { '<leader>cp', group = '[C]o[P]ilot', mode = { 'n', 'v' } },
+}
+vim.keymap.set({'n', 'v'}, '<leader>cpe', '<cmd>CopilotChatExplain<cr>', { desc = '[C]o[P]ilot [E]xplain' })
+vim.keymap.set({'n', 'v'}, '<leader>cpf', '<cmd>CopilotChatFix<cr>', { desc = '[C]o[P]ilot [F]ix' })
+vim.keymap.set({'n', 'v'}, '<leader>cpc', '<cmd>CopilotChat<cr>', { desc = '[C]o[P]ilot [C]hat' })
+vim.keymap.set({'n', 'v'}, '<leader>cpr', '<cmd>CopilotChatReset<cr>', { desc = '[C]o[P]ilot Chat [R]eset' })
+vim.keymap.set({'n', 'v'}, '<leader>cpq', '<cmd>CopilotChatClose<cr>', { desc = '[C]o[P]ilot Chat [C]lose' })
+vim.keymap.set({'n', 'v'}, '<leader>cpo', '<cmd>CopilotChatOptimize<cr>', { desc = '[C]o[P]ilot Chat [O]ptimize' })
+vim.keymap.set({'n', 'v'}, '<leader>cpo', '<cmd>CopilotChatModels<cr>', { desc = '[C]o[P]ilot Chat [M]odels' })
