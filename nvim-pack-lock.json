@@ -35,7 +35,7 @@
       "src": "https://github.com/j-hui/fidget.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "fd780920613e541cbdfac41bf711583ed49f9249",
+      "rev": "ef707fb93301a9b856f36eae4c8f56f5b988a794",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "guess-indent.nvim": {
@@ -59,7 +59,7 @@
       "src": "https://github.com/fei6409/log-highlight.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "00b5473cca4db5b410ff4bae724e3b6e21f2687f",
+      "rev": "97ccf96bb2e7adb5f82975068bd4c7307d2afa8a",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason-nvim-dap.nvim": {
@@ -75,7 +75,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "66b9e643b6dabe15079be7197ee4b4d59ff98c61",
+      "rev": "f9ac12d7cbd2563cfc2cce9a8152fc8df2ad0d6f",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "neo-tree.nvim": {
@@ -104,7 +104,7 @@
       "src": "https://github.com/nvim-java/nvim-java"
     },
     "nvim-lspconfig": {
-      "rev": "45a3a444b710511c39abca3b60bb6e23a21e3de5",
+      "rev": "443d92c6bea761ab54cdde46fb197a2b4d614bdd",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -112,11 +112,11 @@
       "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-treesitter": {
-      "rev": "d3e4a28b63961ba972b0945d66c73b6eec969953",
+      "rev": "19bdfc04f40ed2ccb3340591d125f759b0406875",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-web-devicons": {
-      "rev": "ec309a0eaff6ea967e58c275996155ab5c16938d",
+      "rev": "0dc0cfb0c6858041174a53c7aa4adaf65e994b3c",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "oil.nvim": {
@@ -133,7 +133,7 @@
       "src": "https://github.com/tjdevries/present.nvim"
     },
     "refactoring.nvim": {
-      "rev": "684b3484796ea44595bebbfddee4fa4dbfc90939",
+      "rev": "ea18f97c58276e213736c9f0193f7aa4c690693e",
       "src": "https://github.com/ThePrimeagen/refactoring.nvim"
     },
     "spring-boot.nvim": {
@@ -154,7 +154,7 @@
       "src": "https://github.com/nvim-telescope/telescope-ui-select.nvim"
     },
     "telescope.nvim": {
-      "rev": "40aedd8a68c78a656a10a8d62d80c54af59420fb",
+      "rev": "1e1bab730218eaf97fce743be3f56e51075928ac",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
     "todo-comments.nvim": {
