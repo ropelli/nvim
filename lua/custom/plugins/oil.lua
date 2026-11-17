@@ -35,7 +35,7 @@ require("oil.columns").register("git-commit-date", {
 require('oil').setup {
   keymaps = {
     ['\\'] = {function()
-      local dir = require 'oil'.get_current_dir()
+      local dir = vim.fn.getcwd()
       if dir == nil then
         print 'Could not determine current directory'
         return
