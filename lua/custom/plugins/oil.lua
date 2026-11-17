@@ -34,6 +34,16 @@ require("oil.columns").register("git-commit-date", {
 
 require('oil').setup {
   keymaps = {
+    ['\\'] = {function()
+      local dir = require 'oil'.get_current_dir()
+      if dir == nil then
+        print 'Could not determine current directory'
+        return
+      end
+      local cmd_template = 'Neotree dir={dir}'
+      local cmd = cmd_template:gsub('{dir}', dir)
+      vim.cmd(cmd)
+    end, mode = 'n', desc = 'Neotree in current dir'},
     ['<leader>`'] = {
       function()
         local oil = require 'oil'
